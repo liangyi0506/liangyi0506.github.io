@@ -145,5 +145,5 @@ git push -u origin main			 // 把本地仓库的文件推送到远程仓库
 
 ​	[liangyi0506.github.io](我的博客网址)
 
-​	即可
+​	即可, 这样任何人就都能访问你的网页
 
