@@ -1,7 +1,7 @@
 # Windows下使用hugo+github pages 创建自己的个人博客
 
 
-# 一. 为什么要创建自己的个人博客网站	
+## 一. 为什么要创建自己的个人博客网站	
 
 > ​		我们在进行学习的时候，尤其是在学习新的知识的时候，要想牢固掌握，最好的办法就是将新学习的
 >
@@ -9,7 +9,7 @@
 >
 > 整理的一个过程
 
-# 二. 为什么使用hugo+GitHub Pages
+## 二. 为什么使用hugo+GitHub Pages
 
 > 1. hugo是一款可以方便生成可展示网页的工具，方便了不擅长前端编码的同学
 >
@@ -19,15 +19,15 @@
 >
 >    而且不支持个性化定制，GithubPages技术已经很成熟，而且参考资料众多
 
-# 三. 如何使用hugo+Github Pages 创建自己的博客
+## 三. 如何使用hugo+Github Pages 创建自己的博客
 
-## （一）下载并安装hugo
+### （一）下载并安装hugo
 
 #### 1. 确认自己的安装环境
 
 ​		我这里是windows11，使用的是powershell7作为部署工具，这里可以参考
 
-[hugo官网中的下载页面]: https://gohugo.io/installation/windows/
+​		https://gohugo.io/installation/windows/
 
 ​		我使用了chocolatey作为下载工具，
 
@@ -45,7 +45,7 @@ choco install hugo-extended
 
 
 
-## （二）使用hugo创建自己的站点
+### （二）使用hugo创建自己的站点
 
 #### 1. 使用powershell打开自己想要创建的站点的文件夹路径
 
@@ -67,15 +67,15 @@ hugo new_site
 cd new_site
 ```
 
-## （三）挑选自己喜欢的主题，以LoveIt为例
+### （三）挑选自己喜欢的主题，以LoveIt为例
 
 #### 1. 打开hugo的主题网站，网址如下
 
-[]: https://themes.gohugo.io/
+​	https://themes.gohugo.io/
 
 #### 2. 我选择了LoveIt作为主题，网址如下
 
-[]: https://hugoloveit.com/
+​	https://hugoloveit.com/
 
 ​	这个主题有详细的模块，而且提供了丰富的参考文档教你如何使用，并且支持中文
 
@@ -89,7 +89,7 @@ git clone https://github.com/dillonzq/LoveIt.git themes/LoveIt
 
 ​	这样主题就会下载到themes文件夹下面
 
-## （四）生成自己的第一篇文章
+### （四）生成自己的第一篇文章
 
 #### 1. 使用如下的命令创建自己的第一篇文章
 
@@ -107,7 +107,7 @@ hugo serve
 
 ​	登录 
 
-[]: http://localhost:1313
+http://localhost:1313
 
 ​	就可以看到启动的网站
 
@@ -115,7 +115,7 @@ hugo serve
 
 ## （五）将站点部署到GitHub上
 
-#### 1. 在你的GitHub账户中创建一个库，命名为 *账户名.github.io*
+#### 1. 在你的GitHub账户中创建一个库，命名为 *github_user_name.github.io*
 
 #### 2. 首先生成我们可以公开展示的文件夹，也就是需要上传到github上的文件夹public，执行
 
@@ -143,7 +143,7 @@ git push -u origin main			 // 把本地仓库的文件推送到远程仓库
 
 ​	登录
 
-[]: liangyi0506.github.io
+​	[liangyi0506.github.io](我的博客网址)
 
 ​	即可
 
