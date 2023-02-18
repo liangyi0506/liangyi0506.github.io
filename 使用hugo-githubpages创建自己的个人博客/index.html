@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Windows下使用hugo&#43;github pages 创建自己的个人博客 - LiangYi&#39;Blog</title><meta name="Description" content="This is Liangyi&#39;s Blog"><meta property="og:title" content="Windows下使用hugo&#43;github pages 创建自己的个人博客" />
+<meta property="og:description" content="一. 为什么要创建自己的个人博客网站 ​	我们在进行学习的时候，尤其是在学习新的知识的时候，要想牢固掌握，最好的办法就是将新学习的
+知识向别人讲述，但是这个倾听者不好找，学习写博客同样是一种讲述的办法，同时也是将自己的知识收纳
+整理的一个过程
+二. 为什么使用hugo&#43;GitHub Pages hugo是一款可以方便生成可展示网页的工具，方便了不擅长前端编码的同学
+在hugo下可以舒服地使用markdown进行博客文章页面的书写
+我们需要一个展示的平台——一个服务器来存放我们的文章，CSDN这类的国内平台真的是越用越气人，
+而且不支持个性化定制，GithubPages技术已经很成熟，而且参考资料众多
+三. 如何使用hugo&#43;Github Pages 创建自己的博客 （一）下载并安装hugo 1. 确认自己的安装环境 ​	我这里是windows11，使用的是powershell7作为部署工具，这里可以参考
+​	我使用了chocolatey作为下载工具，
+​	在powershell7的管理员模式下下安装chocolatey的命令如下
+1 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(&#39;https://community.chocolatey.org/install.ps1&#39;)) 2. 下载hugo的命令如下 1 choco install hugo-extended （二）使用hugo创建自己的站点 1. 使用powershell打开自己想要创建的站点的文件夹路径 1 cd 自己想要创建的站点的文件夹路径 2. 创建自己的站点 1 hugo new_site ​	这时候你会发现文件夹下多了一个文件夹叫new_site, 这就是我们接下来要编辑的hugo项目
+​	接下来进入我们的项目
+1 cd new_site （三）挑选自己喜欢的主题，以LoveIt为例 1. 打开hugo的主题网站，网址如下 []: https://themes.gohugo.io/" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://liangyi0506.github.io/%E4%BD%BF%E7%94%A8hugo-githubpages%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" /><meta property="og:image" content="https://liangyi0506.github.io/logo.png"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="LiangYi&#39;s Blog" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://liangyi0506.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Windows下使用hugo&#43;github pages 创建自己的个人博客"/>
+<meta name="twitter:description" content="一. 为什么要创建自己的个人博客网站 ​	我们在进行学习的时候，尤其是在学习新的知识的时候，要想牢固掌握，最好的办法就是将新学习的
+知识向别人讲述，但是这个倾听者不好找，学习写博客同样是一种讲述的办法，同时也是将自己的知识收纳
+整理的一个过程
+二. 为什么使用hugo&#43;GitHub Pages hugo是一款可以方便生成可展示网页的工具，方便了不擅长前端编码的同学
+在hugo下可以舒服地使用markdown进行博客文章页面的书写
+我们需要一个展示的平台——一个服务器来存放我们的文章，CSDN这类的国内平台真的是越用越气人，
+而且不支持个性化定制，GithubPages技术已经很成熟，而且参考资料众多
+三. 如何使用hugo&#43;Github Pages 创建自己的博客 （一）下载并安装hugo 1. 确认自己的安装环境 ​	我这里是windows11，使用的是powershell7作为部署工具，这里可以参考
+​	我使用了chocolatey作为下载工具，
+​	在powershell7的管理员模式下下安装chocolatey的命令如下
+1 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(&#39;https://community.chocolatey.org/install.ps1&#39;)) 2. 下载hugo的命令如下 1 choco install hugo-extended （二）使用hugo创建自己的站点 1. 使用powershell打开自己想要创建的站点的文件夹路径 1 cd 自己想要创建的站点的文件夹路径 2. 创建自己的站点 1 hugo new_site ​	这时候你会发现文件夹下多了一个文件夹叫new_site, 这就是我们接下来要编辑的hugo项目
+​	接下来进入我们的项目
+1 cd new_site （三）挑选自己喜欢的主题，以LoveIt为例 1. 打开hugo的主题网站，网址如下 []: https://themes.gohugo.io/"/>
+<meta name="application-name" content="LiangYi&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="LiangYi&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://liangyi0506.github.io/%E4%BD%BF%E7%94%A8hugo-githubpages%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Windows下使用hugo+github pages 创建自己的个人博客",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/liangyi0506.github.io\/%E4%BD%BF%E7%94%A8hugo-githubpages%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2\/"
+        },"genre": "posts","wordcount":  178 ,
+        "url": "https:\/\/liangyi0506.github.io\/%E4%BD%BF%E7%94%A8hugo-githubpages%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2\/","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "LiangYi"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="LiangYi&#39;Blog"></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="LiangYi&#39;Blog"></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Windows下使用hugo+github pages 创建自己的个人博客</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>LiangYi</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="0001-01-01">0001-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;178 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一下载并安装hugo">（一）下载并安装hugo</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-确认自己的安装环境">1. 确认自己的安装环境</a></li>
+            <li><a href="#2-下载hugo的命令如下">2. 下载hugo的命令如下</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#二使用hugo创建自己的站点">（二）使用hugo创建自己的站点</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-使用powershell打开自己想要创建的站点的文件夹路径">1. 使用powershell打开自己想要创建的站点的文件夹路径</a></li>
+            <li><a href="#2-创建自己的站点">2. 创建自己的站点</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#三挑选自己喜欢的主题以loveit为例">（三）挑选自己喜欢的主题，以LoveIt为例</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-打开hugo的主题网站网址如下">1. 打开hugo的主题网站，网址如下</a></li>
+            <li><a href="#2-我选择了loveit作为主题网址如下">2. 我选择了LoveIt作为主题，网址如下</a></li>
+            <li><a href="#3下载loveit主题">3.下载LoveIt主题</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#四生成自己的第一篇文章">（四）生成自己的第一篇文章</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-使用如下的命令创建自己的第一篇文章">1. 使用如下的命令创建自己的第一篇文章</a></li>
+            <li><a href="#2-在本地启动站点">2. 在本地启动站点</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#五将站点部署到github上">（五）将站点部署到GitHub上</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-在你的github账户中创建一个库命名为-账户名githubio">1. 在你的GitHub账户中创建一个库，命名为 <em>账户名.github.io</em></a></li>
+            <li><a href="#2-首先生成我们可以公开展示的文件夹也就是需要上传到github上的文件夹public执行">2. 首先生成我们可以公开展示的文件夹，也就是需要上传到github上的文件夹public，执行</a></li>
+            <li><a href="#3-之后执行基本的git命令将public下文件上传到我们刚刚创建的库中">3. 之后，执行基本的git命令将public下文件上传到我们刚刚创建的库中</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#六登录我们的博客地址">（六）登录我们的博客地址</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="一-为什么要创建自己的个人博客网站">一. 为什么要创建自己的个人博客网站</h1>
+<blockquote>
+<p>​		我们在进行学习的时候，尤其是在学习新的知识的时候，要想牢固掌握，最好的办法就是将新学习的</p>
+<p>知识向别人讲述，但是这个倾听者不好找，学习写博客同样是一种讲述的办法，同时也是将自己的知识收纳</p>
+<p>整理的一个过程</p>
+</blockquote>
+<h1 id="二-为什么使用hugogithub-pages">二. 为什么使用hugo+GitHub Pages</h1>
+<blockquote>
+<ol>
+<li>
+<p>hugo是一款可以方便生成可展示网页的工具，方便了不擅长前端编码的同学</p>
+</li>
+<li>
+<p>在hugo下可以舒服地使用markdown进行博客文章页面的书写</p>
+</li>
+<li>
+<p>我们需要一个展示的平台——一个服务器来存放我们的文章，CSDN这类的国内平台真的是越用越气人，</p>
+<p>而且不支持个性化定制，GithubPages技术已经很成熟，而且参考资料众多</p>
+</li>
+</ol>
+</blockquote>
+<h1 id="三-如何使用hugogithub-pages-创建自己的博客">三. 如何使用hugo+Github Pages 创建自己的博客</h1>
+<h2 id="一下载并安装hugo">（一）下载并安装hugo</h2>
+<h4 id="1-确认自己的安装环境">1. 确认自己的安装环境</h4>
+<p>​		我这里是windows11，使用的是powershell7作为部署工具，这里可以参考</p>
+<p>​		我使用了chocolatey作为下载工具，</p>
+<p>​		在powershell7的管理员模式下下安装chocolatey的命令如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">Set-ExecutionPolicy</span> <span class="n">Bypass</span> <span class="n">-Scope</span> <span class="k">Process</span> <span class="n">-Force</span><span class="p">;</span> <span class="p">[</span><span class="no">System.Net.ServicePointManager</span><span class="p">]::</span><span class="n">SecurityProtocol</span> <span class="p">=</span> <span class="p">[</span><span class="no">System.Net.ServicePointManager</span><span class="p">]::</span><span class="n">SecurityProtocol</span> <span class="o">-bor</span> <span class="mf">3072</span><span class="p">;</span> <span class="nb">iex </span><span class="p">((</span><span class="nb">New-Object</span> <span class="n">System</span><span class="p">.</span><span class="py">Net</span><span class="p">.</span><span class="n">WebClient</span><span class="p">).</span><span class="py">DownloadString</span><span class="p">(</span><span class="s1">&#39;https://community.chocolatey.org/install.ps1&#39;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="2-下载hugo的命令如下">2. 下载hugo的命令如下</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">choco</span> <span class="n">install</span> <span class="nb">hugo-extended</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="二使用hugo创建自己的站点">（二）使用hugo创建自己的站点</h2>
+<h4 id="1-使用powershell打开自己想要创建的站点的文件夹路径">1. 使用powershell打开自己想要创建的站点的文件夹路径</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">cd </span><span class="err">自己想要创建的站点的文件夹路径</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="2-创建自己的站点">2. 创建自己的站点</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hugo</span> <span class="n">new_site</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	这时候你会发现文件夹下多了一个文件夹叫new_site, 这就是我们接下来要编辑的hugo项目</p>
+<p>​	接下来进入我们的项目</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">cd </span><span class="n">new_site</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="三挑选自己喜欢的主题以loveit为例">（三）挑选自己喜欢的主题，以LoveIt为例</h2>
+<h4 id="1-打开hugo的主题网站网址如下">1. 打开hugo的主题网站，网址如下</h4>
+<p>[]: <a href="https://themes.gohugo.io/" target="_blank" rel="noopener noreffer ">https://themes.gohugo.io/</a></p>
+<h4 id="2-我选择了loveit作为主题网址如下">2. 我选择了LoveIt作为主题，网址如下</h4>
+<p>[]: <a href="https://hugoloveit.com/" target="_blank" rel="noopener noreffer ">https://hugoloveit.com/</a></p>
+<p>​	这个主题有详细的模块，而且提供了丰富的参考文档教你如何使用，并且支持中文</p>
+<h4 id="3下载loveit主题">3.下载LoveIt主题</h4>
+<p>​	在new_site的主目录下，运行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="err">:</span><span class="p">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="p">/</span><span class="n">dillonzq</span><span class="p">/</span><span class="n">LoveIt</span><span class="p">.</span><span class="py">git</span> <span class="n">themes</span><span class="p">/</span><span class="n">LoveIt</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	这样主题就会下载到themes文件夹下面</p>
+<h2 id="四生成自己的第一篇文章">（四）生成自己的第一篇文章</h2>
+<h4 id="1-使用如下的命令创建自己的第一篇文章">1. 使用如下的命令创建自己的第一篇文章</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hugo</span> <span class="n">new</span> <span class="n">posts</span><span class="p">/</span><span class="n">first_post</span><span class="p">.</span><span class="nb">md
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	**注意：**使用编辑器打开就会发下，使用这种方式创建的markdown文件，中draft参数是true，需要把他变成false，或者使用hugo -D / &ndash;buildDrafts serve 才能显示</p>
+<h4 id="2-在本地启动站点">2. 在本地启动站点</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hugo</span> <span class="n">serve</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	登录</p>
+<p>[]: http://localhost:1313</p>
+<p>​	就可以看到启动的网站</p>
+<h2 id="五将站点部署到github上">（五）将站点部署到GitHub上</h2>
+<h4 id="1-在你的github账户中创建一个库命名为-账户名githubio">1. 在你的GitHub账户中创建一个库，命名为 <em>账户名.github.io</em></h4>
+<h4 id="2-首先生成我们可以公开展示的文件夹也就是需要上传到github上的文件夹public执行">2. 首先生成我们可以公开展示的文件夹，也就是需要上传到github上的文件夹public，执行</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">hugo</span> <span class="p">-</span><span class="n">-theme</span><span class="p">=</span><span class="n">LoveIt</span> <span class="p">-</span><span class="n">-baseUrl</span><span class="p">=</span><span class="s2">&#34;https://liangyi0506.github.io/&#34;</span> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	这样你会发下在网站的主目录下生成了一个public文件夹，这就是我们用来展示的文件夹，也是需要</p>
+<p>上传到GitHub的文件夹</p>
+<h4 id="3-之后执行基本的git命令将public下文件上传到我们刚刚创建的库中">3. 之后，执行基本的git命令将public下文件上传到我们刚刚创建的库中</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="nb">cd </span><span class="n">public</span> 						
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">init</span>						 <span class="p">//</span> <span class="err">初始化本地仓库</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">add</span> <span class="p">.</span>						 <span class="p">//</span> <span class="err">添加文件到本地</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&#34;fist commit&#34;</span>		 <span class="p">//</span> <span class="err">添加文件描述信息</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="err">远程仓库地址</span> <span class="p">//</span> <span class="err">链接远程仓库</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">main</span>			 <span class="p">//</span> <span class="err">把本地仓库的变化链接到远程仓库</span>
+</span></span><span class="line"><span class="cl"><span class="n">git</span> <span class="n">push</span> <span class="n">-u</span> <span class="n">origin</span> <span class="n">main</span>			 <span class="p">//</span> <span class="err">把本地仓库的文件推送到远程仓库</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="六登录我们的博客地址">（六）登录我们的博客地址</h2>
+<p>​	登录</p>
+<p>[]: liangyi0506.github.io</p>
+<p>​	即可</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 0001-01-01</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E4%BD%BF%E7%94%A8hugo-githubpages%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://liangyi0506.github.io/%E4%BD%BF%E7%94%A8hugo-githubpages%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-title="Windows下使用hugo&#43;github pages 创建自己的个人博客" data-via="xxxx"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://liangyi0506.github.io/%E4%BD%BF%E7%94%A8hugo-githubpages%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://liangyi0506.github.io/%E4%BD%BF%E7%94%A8hugo-githubpages%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-title="Windows下使用hugo&#43;github pages 创建自己的个人博客"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="https://liangyi0506.github.io/%E4%BD%BF%E7%94%A8hugo-githubpages%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-title="Windows下使用hugo&#43;github pages 创建自己的个人博客"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="https://liangyi0506.github.io/%E4%BD%BF%E7%94%A8hugo-githubpages%E5%88%9B%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-title="Windows下使用hugo&#43;github pages 创建自己的个人博客"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.110.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2019 - 2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
