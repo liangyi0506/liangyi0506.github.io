@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>面试 - Tag - 凉意的个人博客网站</title>
+        <link>https://liangyi0506.github.io/tags/%E9%9D%A2%E8%AF%95/</link>
+        <description>面试 - Tag - 凉意的个人博客网站</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>liangyi1999@yeah.net (LiangYi)</managingEditor>
+            <webMaster>liangyi1999@yeah.net (LiangYi)</webMaster><lastBuildDate>Wed, 22 Feb 2023 17:47:00 &#43;0800</lastBuildDate><atom:link href="https://liangyi0506.github.io/tags/%E9%9D%A2%E8%AF%95/" rel="self" type="application/rss+xml" /><item>
+    <title>Java面试八股文</title>
+    <link>https://liangyi0506.github.io/java%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87/</link>
+    <pubDate>Wed, 22 Feb 2023 17:47:00 &#43;0800</pubDate>
+    <author>LiangYi</author>
+    <guid>https://liangyi0506.github.io/java%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/Java.jpg" referrerpolicy="no-referrer">
+            </div>Java面试八股文 一. Java基础 Java语言有哪些特点 Java 为纯面向对象的语言。它能够直接反应现实生活中的对象。 具有平台无关性。Java 利用 Java]]></description>
+</item>
+</channel>
+</rss>

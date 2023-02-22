@@ -4,7 +4,27 @@
         <link>https://liangyi0506.github.io/posts/</link>
         <description>All Posts | 凉意的个人博客网站</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>liangyi1999@yeah.net (LiangYi)</managingEditor>
-            <webMaster>liangyi1999@yeah.net (LiangYi)</webMaster><lastBuildDate>Sun, 19 Feb 2023 16:21:54 &#43;0800</lastBuildDate><atom:link href="https://liangyi0506.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>liangyi1999@yeah.net (LiangYi)</webMaster><lastBuildDate>Wed, 22 Feb 2023 17:47:00 &#43;0800</lastBuildDate><atom:link href="https://liangyi0506.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Java面试八股文</title>
+    <link>https://liangyi0506.github.io/java%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87/</link>
+    <pubDate>Wed, 22 Feb 2023 17:47:00 &#43;0800</pubDate>
+    <author>LiangYi</author>
+    <guid>https://liangyi0506.github.io/java%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/Java.jpg" referrerpolicy="no-referrer">
+            </div>Java面试八股文 一. Java基础 Java语言有哪些特点 Java 为纯面向对象的语言。它能够直接反应现实生活中的对象。 具有平台无关性。Java 利用 Java]]></description>
+</item>
+<item>
+    <title>几种常用的排序算法总结</title>
+    <link>https://liangyi0506.github.io/%E5%87%A0%E7%A7%8D%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</link>
+    <pubDate>Wed, 22 Feb 2023 17:46:00 &#43;0800</pubDate>
+    <author>LiangYi</author>
+    <guid>https://liangyi0506.github.io/%E5%87%A0%E7%A7%8D%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/%e6%8e%92%e5%ba%8f%e7%ae%97%e6%b3%95.jpg" referrerpolicy="no-referrer">
+            </div>总结 时间复杂度 空间复杂度 是否每次遍历都能确定一个数的位置 适用 直接插入排序 O(n^2) 1 否 希尔排序 O(nlogn) 1 否 冒泡排序 O(n^2) 1 是 简单选择排序 O(n^2) 1 是 快速排序 O(nlogn) 1 是 归]]></description>
+</item>
+<item>
     <title>github使用教程</title>
     <link>https://liangyi0506.github.io/github%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</link>
     <pubDate>Sun, 19 Feb 2023 16:21:54 &#43;0800</pubDate>
