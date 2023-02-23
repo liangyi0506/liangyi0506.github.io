@@ -1,2 +1,7 @@
-# liangyi0506.github.io
-# this is a blog website
+# 梁毅的个人博客网站
+
+![logo](logo.png)
+
+> 主要用于发表一些计算机技术的分享和个人心得，欢迎大家指正
+>
+> 如有什么疑问请发送邮件到： liangyi1999@yeah.net
