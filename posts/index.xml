@@ -4,7 +4,17 @@
         <link>https://liangyi0506.github.io/posts/</link>
         <description>All Posts | 凉意的个人博客网站</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>liangyi1999@yeah.net (LiangYi)</managingEditor>
-            <webMaster>liangyi1999@yeah.net (LiangYi)</webMaster><lastBuildDate>Thu, 23 Feb 2023 17:07:00 &#43;0800</lastBuildDate><atom:link href="https://liangyi0506.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>liangyi1999@yeah.net (LiangYi)</webMaster><lastBuildDate>Tue, 28 Feb 2023 21:11:00 &#43;0800</lastBuildDate><atom:link href="https://liangyi0506.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>WSL2&#43;Ubuntu20.04&#43;CUDA11.3&#43;Pytorch环境搭建</title>
+    <link>https://liangyi0506.github.io/wsl2-ubuntu20.04-cuda11.3-pytorch-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
+    <pubDate>Tue, 28 Feb 2023 21:11:00 &#43;0800</pubDate>
+    <author>LiangYi</author>
+    <guid>https://liangyi0506.github.io/wsl2-ubuntu20.04-cuda11.3-pytorch-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/wsl2.png" referrerpolicy="no-referrer">
+            </div>一. 安装WSL2 ​ 具体安装的步骤可以直接看 微软官方的安装文档 ，官方文档写的很详细，满足系统要求，安装步骤一般 都能成功安装。 二. 安装显卡驱动—]]></description>
+</item>
+<item>
     <title>hugo&#43;GithubPages创建网站的相关问题</title>
     <link>https://liangyi0506.github.io/hugo-githubpages%E5%88%9B%E5%BB%BA%E7%BD%91%E7%AB%99%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</link>
     <pubDate>Thu, 23 Feb 2023 17:07:00 &#43;0800</pubDate>
@@ -22,7 +32,7 @@
     <guid>https://liangyi0506.github.io/java%E9%9D%A2%E8%AF%95%E5%85%AB%E8%82%A1%E6%96%87/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/Java.jpg" referrerpolicy="no-referrer">
-            </div>Java面试八股文 一. Java基础 Java语言有哪些特点 Java 为纯面向对象的语言。它能够直接反应现实生活中的对象。 具有平台无关性。Java 利用 Java]]></description>
+            </div>一. Java基础 Java语言有哪些特点 Java 为纯面向对象的语言。它能够直接反应现实生活中的对象。 具有平台无关性。Java 利用 Java 虚拟机运行字节码，]]></description>
 </item>
 <item>
     <title>几种常用的排序算法总结</title>

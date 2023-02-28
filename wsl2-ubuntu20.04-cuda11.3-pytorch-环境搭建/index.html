@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>WSL2&#43;Ubuntu20.04&#43;CUDA11.3&#43;Pytorch环境搭建 - 凉意的个人博客网站</title><meta name="Description" content="凉意的个人博客网站"><meta property="og:title" content="WSL2&#43;Ubuntu20.04&#43;CUDA11.3&#43;Pytorch环境搭建" />
+<meta property="og:description" content="一. 安装WSL2 ​ 具体安装的步骤可以直接看 微软官方的安装文档 ，官方文档写的很详细，满足系统要求，安装步骤一般 都能成功安装。 二. 安装显卡驱动—" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://liangyi0506.github.io/wsl2-ubuntu20.04-cuda11.3-pytorch-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" /><meta property="og:image" content="https://liangyi0506.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-02-28T21:11:00+08:00" />
+<meta property="article:modified_time" content="2023-02-28T21:11:00+08:00" /><meta property="og:site_name" content="凉意的网站" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://liangyi0506.github.io/logo.png"/>
+
+<meta name="twitter:title" content="WSL2&#43;Ubuntu20.04&#43;CUDA11.3&#43;Pytorch环境搭建"/>
+<meta name="twitter:description" content="一. 安装WSL2 ​ 具体安装的步骤可以直接看 微软官方的安装文档 ，官方文档写的很详细，满足系统要求，安装步骤一般 都能成功安装。 二. 安装显卡驱动—"/>
+<meta name="application-name" content="凉意的网站">
+<meta name="apple-mobile-web-app-title" content="凉意的网站"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
+        <link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://liangyi0506.github.io/wsl2-ubuntu20.04-cuda11.3-pytorch-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" /><link rel="prev" href="https://liangyi0506.github.io/hugo-githubpages%E5%88%9B%E5%BB%BA%E7%BD%91%E7%AB%99%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "WSL2+Ubuntu20.04+CUDA11.3+Pytorch环境搭建",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/liangyi0506.github.io\/wsl2-ubuntu20.04-cuda11.3-pytorch-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA\/"
+        },"genre": "posts","keywords": "WSL, Ubuntu, CUDA, Pytorch","wordcount":  1183 ,
+        "url": "https:\/\/liangyi0506.github.io\/wsl2-ubuntu20.04-cuda11.3-pytorch-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA\/","datePublished": "2023-02-28T21:11:00+08:00","dateModified": "2023-02-28T21:11:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "LiangYi"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="凉意的个人博客网站"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/avatar.png"
+        data-srcset="/images/avatar.png, /images/avatar.png 1.5x, /images/avatar.png 2x"
+        data-sizes="auto"
+        alt="/images/avatar.png"
+        title="/images/avatar.png" />凉意的博客网站</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="凉意的个人博客网站"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/avatar.png"
+        data-srcset="/images/avatar.png, /images/avatar.png 1.5x, /images/avatar.png 2x"
+        data-sizes="auto"
+        alt="/images/avatar.png"
+        title="/images/avatar.png" />凉意的博客网站</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">WSL2+Ubuntu20.04+CUDA11.3+Pytorch环境搭建</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://liangyi0506.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>LiangYi</a></span>&nbsp;<span class="post-category">included in <a href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>环境搭建</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-02-28">2023-02-28</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1183 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;<span id="/wsl2-ubuntu20.04-cuda11.3-pytorch-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="leancloud_visitors" data-flag-title="WSL2&#43;Ubuntu20.04&#43;CUDA11.3&#43;Pytorch环境搭建">
+                        <i class="far fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span class=leancloud-visitors-count></span>&nbsp;views
+                    </span>&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/wsl2.png"
+        data-srcset="/images/wsl2.png, /images/wsl2.png 1.5x, /images/wsl2.png 2x"
+        data-sizes="auto"
+        alt="/images/wsl2.png"
+        title="/images/wsl2.png" /></div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一-安装wsl2">一. 安装WSL2</a></li>
+    <li><a href="#二-安装显卡驱动在windows上面">二. 安装显卡驱动——在windows上面</a></li>
+    <li><a href="#三-安装miniconda创建虚拟环境">三. 安装miniconda——创建虚拟环境</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-在wsl2中的ubuntu2004中使用命令行安装miniconda">1. 在WSL2中的Ubuntu20.04中使用命令行安装miniconda</a></li>
+            <li><a href="#2-或者在官网直接下载安装包">2. 或者在官网直接下载安装包</a></li>
+            <li><a href="#3-安装的最后一步需要init选择yes">3. 安装的最后一步需要init，选择yes</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#四-安装cuda113">四. 安装CUDA11.3</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-在ubuntu中查看当前显卡驱动最高支持的cuda版本">1. 在Ubuntu中查看当前显卡驱动最高支持的CUDA版本</a></li>
+            <li><a href="#2-更新软件列表同时安装必备的工具包">2. 更新软件列表，同时安装必备的工具包</a></li>
+            <li><a href="#3-安装cuda-toolkit">3. 安装CUDA toolkit</a></li>
+            <li><a href="#4-将cuda路径写入环境">4. 将CUDA路径写入环境</a></li>
+            <li><a href="#5-验证cuda是否安装成功">5. 验证cuda是否安装成功</a></li>
+            <li><a href="#6-运行cuda自带的samples">6. 运行cuda自带的samples</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#五-安装pytorch">五. 安装Pytorch</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-建立虚拟环境">1. 建立虚拟环境</a></li>
+            <li><a href="#2-安装pytorch">2. 安装pytorch</a></li>
+            <li><a href="#3-验证pytorch的gpu版本是否安装成功">3. 验证pytorch的gpu版本是否安装成功</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="一-安装wsl2">一. 安装WSL2</h2>
+<p>​	具体安装的步骤可以直接看 <a href="https://learn.microsoft.com/zh-cn/windows/wsl/install" target="_blank" rel="noopener noreffer ">微软官方的安装文档</a> ，官方文档写的很详细，满足系统要求，安装步骤一般</p>
+<p>都能成功安装。</p>
+<h2 id="二-安装显卡驱动在windows上面">二. 安装显卡驱动——在windows上面</h2>
+<p>​	一般安装了英伟达显卡的电脑，都会安装适配的显卡驱动，一般能都满足要求，不放心的用Nvidia</p>
+<p>Geforce 更新一下即可，或者在<a href="https://www.nvidia.cn/Download/index.aspx?lang=cn" target="_blank" rel="noopener noreffer ">英伟达官网</a>安装显卡驱动</p>
+<p>​	<figure><img src="/images/nvidia-driver-download.png"/><figcaption>
+            <h4>nvidia-driver-download</h4>
+        </figcaption>
+</figure>
+</p>
+<p>​	这里按照你自己的显卡型号和系统类型选择即可，下载类型选择Game Ready即可。</p>
+<p>​	现在完成之后，安装默认指引安装。</p>
+<h2 id="三-安装miniconda创建虚拟环境">三. 安装miniconda——创建虚拟环境</h2>
+<h4 id="1-在wsl2中的ubuntu2004中使用命令行安装miniconda">1. 在WSL2中的Ubuntu20.04中使用命令行安装miniconda</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+</span></span><span class="line"><span class="cl">bash Miniconda3-latest-Linux-x86_64.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="2-或者在官网直接下载安装包">2. 或者在官网直接下载安装包</h4>
+<p>​	打开miniconda官网，选择相应的安装包</p>
+<p>​	<figure><img src="/images/miniconda-linux-download.png"/><figcaption>
+            <h4>miniconda-linux-download</h4>
+        </figcaption>
+</figure>
+</p>
+<p>将安装包移动到ubuntu中使用下面的命令安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">bash Miniconda3-latest-Linux-x86_64.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="3-安装的最后一步需要init选择yes">3. 安装的最后一步需要init，选择yes</h4>
+<p>​	安装之后，关闭当前shell，才可以使用conda命令</p>
+<p>​	命令行前会出现base，每次系统启动都会自动激活conda的基础环境，想要退回到系统自带的环境，可以</p>
+<p>有两种方法：</p>
+<blockquote>
+<p>​	方法一：每次都运行 conda deactivate</p>
+<p>​	方法二：运行 conda config &ndash;set auto_activate_base false</p>
+</blockquote>
+<h2 id="四-安装cuda113">四. 安装CUDA11.3</h2>
+<h4 id="1-在ubuntu中查看当前显卡驱动最高支持的cuda版本">1. 在Ubuntu中查看当前显卡驱动最高支持的CUDA版本</h4>
+<p>​	使用下面的命令查看显卡信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nvidia-smi
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	<figure><img src="/images/ubuntu-nvidia-smi.png"/><figcaption>
+            <h4>ubuntu-nvidia-smi</h4>
+        </figcaption>
+</figure>
+</p>
+<p>​	<strong>注意</strong>:这里的cuda version不是指只能安装cuda12.0，而是指最高支持12.0，一般都可以向下兼容，但是</p>
+<p>有的显卡对cuda的最低版本有要求，比如我使用的这款GTX-3060，最低要求cuda11.1，我这里就以</p>
+<p>cuda11.3做演示。</p>
+<h4 id="2-更新软件列表同时安装必备的工具包">2. 更新软件列表，同时安装必备的工具包</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get update
+</span></span><span class="line"><span class="cl">sudo apt-get install build-essential
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="3-安装cuda-toolkit">3. 安装CUDA toolkit</h4>
+<p>​	进入<a href="https://developer.nvidia.com/cuda-11.3.0-download-archive" target="_blank" rel="noopener noreffer ">官方CUDA13安装页面</a>，依次选择Linux，x86_64，WSL-Ubuntu，2.0，runfile(local)</p>
+<p>​	<figure><img src="/images/nvidia-cuda-local.png"/><figcaption>
+            <h4>nvidia-cuda-local</h4>
+        </figcaption>
+</figure>
+</p>
+<p>​	这里选择runfile(local)可以避免很多bug，执行下面的命令进行安装</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://developer.download.nvidia.com/compute/cuda/11.3.0/local_installers/cuda_11.3.0_465.19.01_linux.run
+</span></span><span class="line"><span class="cl">sudo sh cuda_11.3.0_465.19.01_linux.run
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	<strong>注意</strong>：这里在安装界面全部按照默认选项即可</p>
+<h4 id="4-将cuda路径写入环境">4. 将CUDA路径写入环境</h4>
+<p>​	编辑进入~/.bashrc</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vim ~/.bashrc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	将下面内容插入文件的最后</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">export CUDA_HOME<span class="o">=</span>/usr/local/cuda 
+</span></span><span class="line"><span class="cl">export PATH<span class="o">=</span><span class="nv">$PATH</span>:<span class="nv">$CUDA_HOME</span>/bin 
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/cuda11.3/lib64<span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="p">:+:</span><span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="si">}}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="5-验证cuda是否安装成功">5. 验证cuda是否安装成功</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nvcc -V
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	如果一切正常，会显示下面的内容</p>
+<figure><img src="/images/nvcc-V.png"/><figcaption>
+            <h4>nvcc-V</h4>
+        </figcaption>
+</figure>
+
+<p><strong>注意</strong>：我这种方式不需要安装cudnn，可以直接安装Pytorch</p>
+<h4 id="6-运行cuda自带的samples">6. 运行cuda自带的samples</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /usr/local/cuda/samples/4_Finance/BlackScholes
+</span></span><span class="line"><span class="cl">sudo make
+</span></span><span class="line"><span class="cl">./BlackScholes 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	正常会显示，如下：</p>
+<p>​	<figure><img src="/images/cuda-sample-show.png"/><figcaption>
+            <h4>cuda-sample-show</h4>
+        </figcaption>
+</figure>
+</p>
+<h2 id="五-安装pytorch">五. 安装Pytorch</h2>
+<h4 id="1-建立虚拟环境">1. 建立虚拟环境</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">conda create -n pytorch <span class="nv">python</span><span class="o">=</span>3.8
+</span></span><span class="line"><span class="cl">conda activate pytorch
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="2-安装pytorch">2. 安装pytorch</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pip install <span class="nv">torch</span><span class="o">==</span>1.12.1+cu113 <span class="nv">torchvision</span><span class="o">==</span>0.13.1+cu113 <span class="nv">torchaudio</span><span class="o">==</span>0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	<strong>注意</strong>：这里尽量使用pip安装，conda安装总是下载cpu版本，我们想要的是gpu版本的。</p>
+<h4 id="3-验证pytorch的gpu版本是否安装成功">3. 验证pytorch的gpu版本是否安装成功</h4>
+<p>​	输入 python，进入python命令行模式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	输入下面的命令：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">torch</span>
+</span></span><span class="line"><span class="cl"><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	返回true，则说明安装正常</p>
+<hr>
+<p>写在最后：</p>
+<p>为了这玩意儿，折腾了有小两天，然而并无卵用，工具的学习是为了内容，以后还是别轻易折腾了</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-02-28</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/wsl2-ubuntu20.04-cuda11.3-pytorch-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/wsl/">WSL</a>,&nbsp;<a href="/tags/ubuntu/">Ubuntu</a>,&nbsp;<a href="/tags/cuda/">CUDA</a>,&nbsp;<a href="/tags/pytorch/">Pytorch</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/hugo-githubpages%E5%88%9B%E5%BB%BA%E7%BD%91%E7%AB%99%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/" class="prev" rel="prev" title="hugo&#43;GithubPages创建网站的相关问题"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>hugo+GithubPages创建网站的相关问题</a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript><div id="gitalk" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
+            </noscript><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.110.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://liangyi0506.github.io/" target="_blank">LiangYi</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/gitalk/gitalk.min.css"><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="https://comments.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/gitalk/gitalk.min.js"></script><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{"gitalk":{"admin":[""],"clientID":"","clientSecret":"","id":"2023-02-28T21:11:00+08:00","owner":"","repo":"","title":"WSL2+Ubuntu20.04+CUDA11.3+Pytorch环境搭建"},"valine":{"appId":"","appKey":"","avatar":"mp","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-google@14.0.0/img/google/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":false,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Your comment ...","recordIP":true,"visitor":true}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
