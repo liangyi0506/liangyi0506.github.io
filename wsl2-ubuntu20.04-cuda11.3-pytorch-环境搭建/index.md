@@ -167,9 +167,17 @@ torch.cuda.is_available()
 
 
 
+参考文章：
+
+[在WSL 2中配置Cuda以及gpu版本的pytorch(2022最新版)](https://www.bilibili.com/read/cv16616792)
+
+[WSL2 安装 CUDA + PyTorch](https://zhuanlan.zhihu.com/p/506477744)
+
+[win10的wsl2安装cuda并配置pytorch](https://zhuanlan.zhihu.com/p/350399229)
+
 ---
 
 写在最后：
 
-为了这玩意儿，折腾了有小两天，然而并无卵用，工具的学习是为了内容，以后还是别轻易折腾了
+为了这玩意儿，折腾了有小两天，然而并无卵用，工具的学习是为了内容，非必须别轻易折腾
 
