@@ -1,0 +1,18 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>MySQL - Category - 凉意的个人博客网站</title>
+        <link>https://liangyi0506.github.io/categories/mysql/</link>
+        <description>MySQL - Category - 凉意的个人博客网站</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>liangyi1999@yeah.net (LiangYi)</managingEditor>
+            <webMaster>liangyi1999@yeah.net (LiangYi)</webMaster><lastBuildDate>Thu, 02 Mar 2023 23:13:00 &#43;0800</lastBuildDate><atom:link href="https://liangyi0506.github.io/categories/mysql/" rel="self" type="application/rss+xml" /><item>
+    <title>Windows使用Navicat连接 WSL2中的MySQL服务</title>
+    <link>https://liangyi0506.github.io/windows11-%E4%BD%BF%E7%94%A8navicat%E8%BF%9E%E6%8E%A5-wsl2%E4%B8%AD%E7%9A%84mysql%E6%9C%8D%E5%8A%A1/</link>
+    <pubDate>Thu, 02 Mar 2023 23:13:00 &#43;0800</pubDate>
+    <author>LiangYi</author>
+    <guid>https://liangyi0506.github.io/windows11-%E4%BD%BF%E7%94%A8navicat%E8%BF%9E%E6%8E%A5-wsl2%E4%B8%AD%E7%9A%84mysql%E6%9C%8D%E5%8A%A1/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/navicat.jpg" referrerpolicy="no-referrer">
+            </div>本文中使用的 MySQL版本是MySQL8.0 WSL发行版是Ubuntu-20.04 Windows版本是Windows11 22H2 一. 在Ubuntu]]></description>
+</item>
+</channel>
+</rss>
