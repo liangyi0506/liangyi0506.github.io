@@ -115,3 +115,16 @@ ifconfig
 
 ​	点击测试连接，显示连接成功即可。
 
+
+
+参考
+---
+
+[在windows下远程调用、连接（navicat）wsl2中 mysql 8.* 的详细步骤](https://blog.csdn.net/weixin_42580217/article/details/122583888)
+
+[Win10连接WSL2-Ubuntu中的MySQL_Simon loves games-CSDN博客_连接wsl的mysql](https://blog.csdn.net/simongame/article/details/107800586)
+
+[mysql you need (at least one of) the SYSTEM_USER privilege(s) for this operation - 赵先鑫 - 博客园](https://www.cnblogs.com/zhaoxianxin/p/13434416.html)
+
+[Mysql 8.0.13 开启远程访问权限（ERROR 1064 (42000): You have an error in your SQL syntax; check the manual th）_GentleCP的博客-CSDN博客](https://blog.csdn.net/GentleCP/article/details/87936263)
+
