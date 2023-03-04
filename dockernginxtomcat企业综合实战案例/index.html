@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Docker&amp;Nginx&amp;Tomcat企业综合实战案例 - 凉意的个人博客网站</title><meta name="Description" content="凉意的个人博客网站"><meta property="og:title" content="Docker&amp;Nginx&amp;Tomcat企业综合实战案例" />
+<meta property="og:description" content="一. 从0开始构建Docker虚拟化平台 1.什么是虚拟化 ​ 将物理的资源转变为逻辑上可以管理调用的资源，以打破物理资源结构之间的壁垒，让计算的原" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://liangyi0506.github.io/dockernginxtomcat%E4%BC%81%E4%B8%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" /><meta property="og:image" content="https://liangyi0506.github.io/logo.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-04T22:45:00+08:00" />
+<meta property="article:modified_time" content="2023-03-04T22:45:00+08:00" /><meta property="og:site_name" content="凉意的网站" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://liangyi0506.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Docker&amp;Nginx&amp;Tomcat企业综合实战案例"/>
+<meta name="twitter:description" content="一. 从0开始构建Docker虚拟化平台 1.什么是虚拟化 ​ 将物理的资源转变为逻辑上可以管理调用的资源，以打破物理资源结构之间的壁垒，让计算的原"/>
+<meta name="application-name" content="凉意的网站">
+<meta name="apple-mobile-web-app-title" content="凉意的网站"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
+        <link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://liangyi0506.github.io/dockernginxtomcat%E4%BC%81%E4%B8%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" /><link rel="prev" href="https://liangyi0506.github.io/wsl%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Docker\u0026Nginx\u0026Tomcat企业综合实战案例",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/liangyi0506.github.io\/dockernginxtomcat%E4%BC%81%E4%B8%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B\/"
+        },"genre": "posts","keywords": "Docker, Nginx, Tomcat, CentOS","wordcount":  983 ,
+        "url": "https:\/\/liangyi0506.github.io\/dockernginxtomcat%E4%BC%81%E4%B8%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B\/","datePublished": "2023-03-04T22:45:00+08:00","dateModified": "2023-03-04T22:45:00+08:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "LiangYi"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="凉意的个人博客网站"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/avatar.png"
+        data-srcset="/images/avatar.png, /images/avatar.png 1.5x, /images/avatar.png 2x"
+        data-sizes="auto"
+        alt="/images/avatar.png"
+        title="/images/avatar.png" />凉意的博客网站</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="凉意的个人博客网站"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/avatar.png"
+        data-srcset="/images/avatar.png, /images/avatar.png 1.5x, /images/avatar.png 2x"
+        data-sizes="auto"
+        alt="/images/avatar.png"
+        title="/images/avatar.png" />凉意的博客网站</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Docker&Nginx&Tomcat企业综合实战案例</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://liangyi0506.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>LiangYi</a></span>&nbsp;<span class="post-category">included in <a href="/categories/docker/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Docker</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-04">2023-03-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;983 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/docker.png"
+        data-srcset="/images/docker.png, /images/docker.png 1.5x, /images/docker.png 2x"
+        data-sizes="auto"
+        alt="/images/docker.png"
+        title="/images/docker.png" /></div><div class="details toc" id="toc-static"  data-kept="true">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#一-从0开始构建docker虚拟化平台">一. 从0开始构建Docker虚拟化平台</a>
+      <ul>
+        <li><a href="#1什么是虚拟化">1.什么是虚拟化</a></li>
+        <li><a href="#2虚拟化技术的意义">2.虚拟化技术的意义</a></li>
+        <li><a href="#3虚拟化技术的种类">3.虚拟化技术的种类</a>
+          <ul>
+            <li><a href="#4docker虚拟化技术的概念">4.Docker虚拟化技术的概念</a></li>
+            <li><a href="#5docker-要求部署docker平台的linux发行版的内核版本至少在38以上">5.Docker 要求部署Docker平台的Linux发行版的内核版本至少在3.8以上</a></li>
+            <li><a href="#6基于centos76x-linux操作系统通过yum-二进制方式构建docker虚拟化平台操作方法和部署指令如下">6.基于CentOS7.6.x Linux操作系统，通过yum 二进制方式构建Docker虚拟化平台，操作方法和部署指令如下：</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#二启动一台nginx-web服务容器">二.启动一台Nginx WEB服务容器</a></li>
+    <li><a href="#三开启tomcat容器和开启nginx的方法基本一致只需要将上述命令中的nginx换成tomcat即可">三.开启Tomcat容器和开启Nginx的方法基本一致，只需要将上述命令中的Nginx换成Tomcat即可</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="一-从0开始构建docker虚拟化平台">一. 从0开始构建Docker虚拟化平台</h2>
+<h3 id="1什么是虚拟化">1.什么是虚拟化</h3>
+<blockquote>
+<p>​		将物理的资源转变为逻辑上可以管理调用的资源，以打破物理资源结构之间的壁垒，让计算的原件运行在虚拟的集成环境中，而不是直接运行在物理资源上</p>
+</blockquote>
+<h3 id="2虚拟化技术的意义">2.虚拟化技术的意义</h3>
+<blockquote>
+<ol>
+<li>最大化利用硬件资源——可以在不同的环境中多部署项目。</li>
+<li>可以淘汰老旧服务器资源，对老旧服务器资源进行重组重用。</li>
+<li>加快对企业服务器资源进行调度管理，加快企业自动化运维</li>
+</ol>
+</blockquote>
+<h3 id="3虚拟化技术的种类">3.虚拟化技术的种类</h3>
+<pre><code>1. VMare ESXI
+1. XEN
+1. Open-vz
+1. Hyper-v
+1. KVM
+1. Docker
+</code></pre>
+<h4 id="4docker虚拟化技术的概念">4.Docker虚拟化技术的概念</h4>
+<blockquote>
+<p>Docker 是目前企业中使用最多的虚拟化技术，其特点是：轻量级，安全，稳定，主要是为解决企业轻量级服务器操作系统和应用容器资源诞生的</p>
+</blockquote>
+<h4 id="5docker-要求部署docker平台的linux发行版的内核版本至少在38以上">5.Docker 要求部署Docker平台的Linux发行版的内核版本至少在3.8以上</h4>
+<h4 id="6基于centos76x-linux操作系统通过yum-二进制方式构建docker虚拟化平台操作方法和部署指令如下">6.基于CentOS7.6.x Linux操作系统，通过yum 二进制方式构建Docker虚拟化平台，操作方法和部署指令如下：</h4>
+<p>（1）安装第三方扩展源</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install epel-release -y 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>（2）安装Docker软件包并检查是否部署成功, 下面两条命令都可以</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">yum install docker -y
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">rpm -qa<span class="p">|</span>grep docker
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>（3）启动Docker服务</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">systemctl start docker.service
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>（4）查看Docker引擎服务进程</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ps -ef<span class="p">|</span>grep docker
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>（5）查看Docker版本信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker version
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="二启动一台nginx-web服务容器">二.启动一台Nginx WEB服务容器</h2>
+<blockquote>
+<p>基于Docker虚拟化平台直接启动应用容器，启动一台Nginx WEB服务容器，默认会启动Nginx服务，同时监听80端口，用户通过历览器能够实现页面的访问</p>
+</blockquote>
+<p>操作部署指令和方法如下：</p>
+<p>（1）搜索Nginx镜像</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker search nginx <span class="c1"># 搜索nginx镜像， offical一栏 显示 OK 的就是官方版本</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>（2）从Docker仓库中下载Nginx镜像</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker pull docker.io/nginx
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>（3）查看一下已经下载的Nginx镜像和列表</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker images	<span class="c1"># 查看docker下面所有的镜像</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker images <span class="p">|</span> grep -i nginx <span class="c1"># 只查看nginx镜像</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>（4）通过nginx镜像启动nginx镜像</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run -itd -p 80:80 nginx:latest
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>1. run 表示创建一台全新容器
+1. -i 表示interactive交互模式
+1. -t tty代开终端
+1. -d detach后台运行
+1. -p publish发布端口，开启DNAT映射，将宿主机80（第一个）映射到容器80
+</code></pre>
+<p>（5）查看Nginx容器的运行状态和IP</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker ps <span class="c1"># 查看</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker inspect Nginx_CONTAINER_ID <span class="p">|</span>grep -i ipaddr<span class="p">|</span>tail -1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	通过浏览器访问nginx平台 IP地址:端口</p>
+<figure><img src="/images/docker-nginx-success-begin.png"/><figcaption>
+            <h4>docker-nginx-success-begin</h4>
+        </figcaption>
+</figure>
+
+<p>（6）进入nginx镜像中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it Nginx_CONTAINER_ID /bin/bash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="三开启tomcat容器和开启nginx的方法基本一致只需要将上述命令中的nginx换成tomcat即可">三.开启Tomcat容器和开启Nginx的方法基本一致，只需要将上述命令中的Nginx换成Tomcat即可</h2>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-03-04</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/dockernginxtomcat%E4%BC%81%E4%B8%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/docker/">Docker</a>,&nbsp;<a href="/tags/nginx/">Nginx</a>,&nbsp;<a href="/tags/tomcat/">Tomcat</a>,&nbsp;<a href="/tags/centos/">CentOS</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/wsl%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4/" class="prev" rel="prev" title="WSL相关指令"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>WSL相关指令</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.110.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://liangyi0506.github.io/" target="_blank">LiangYi</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
