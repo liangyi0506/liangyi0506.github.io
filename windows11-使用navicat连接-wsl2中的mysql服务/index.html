@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>Windows使用Navicat连接 WSL2中的MySQL服务 - 凉意的个人博客网站</title><meta name="Description" content="凉意的个人博客网站"><meta property="og:title" content="Windows使用Navicat连接 WSL2中的MySQL服务" />
-<meta property="og:description" content="本文中使用的 MySQL版本是MySQL8.0 WSL发行版是Ubuntu-20.04 Windows版本是Windows11 22H2 一. 在Ubuntu" />
+<meta property="og:description" content="本文中使用的 MySQL版本是MySQL8.0 WSL发行版是Ubuntu-20.04 Windows版本是Windows11 22H2 一. 在WSL-Ub" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://liangyi0506.github.io/windows11-%E4%BD%BF%E7%94%A8navicat%E8%BF%9E%E6%8E%A5-wsl2%E4%B8%AD%E7%9A%84mysql%E6%9C%8D%E5%8A%A1/" /><meta property="og:image" content="https://liangyi0506.github.io/logo.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-03-02T23:13:00+08:00" />
@@ -14,10 +14,10 @@
 <meta name="twitter:image" content="https://liangyi0506.github.io/logo.png"/>
 
 <meta name="twitter:title" content="Windows使用Navicat连接 WSL2中的MySQL服务"/>
-<meta name="twitter:description" content="本文中使用的 MySQL版本是MySQL8.0 WSL发行版是Ubuntu-20.04 Windows版本是Windows11 22H2 一. 在Ubuntu"/>
+<meta name="twitter:description" content="本文中使用的 MySQL版本是MySQL8.0 WSL发行版是Ubuntu-20.04 Windows版本是Windows11 22H2 一. 在WSL-Ub"/>
 <meta name="application-name" content="凉意的网站">
 <meta name="apple-mobile-web-app-title" content="凉意的网站"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c">
-        <link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://liangyi0506.github.io/windows11-%E4%BD%BF%E7%94%A8navicat%E8%BF%9E%E6%8E%A5-wsl2%E4%B8%AD%E7%9A%84mysql%E6%9C%8D%E5%8A%A1/" /><link rel="prev" href="https://liangyi0506.github.io/wsl2-ubuntu20.04-cuda11.3-pytorch-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" /><link rel="next" href="https://liangyi0506.github.io/wsl%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="shortcut icon" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://liangyi0506.github.io/windows11-%E4%BD%BF%E7%94%A8navicat%E8%BF%9E%E6%8E%A5-wsl2%E4%B8%AD%E7%9A%84mysql%E6%9C%8D%E5%8A%A1/" /><link rel="prev" href="https://liangyi0506.github.io/wsl2-ubuntu20.04-cuda11.3-pytorch-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" /><link rel="next" href="https://liangyi0506.github.io/dockernginxtomcat%E4%BC%81%E4%B8%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
     {
@@ -28,7 +28,7 @@
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "https:\/\/liangyi0506.github.io\/windows11-%E4%BD%BF%E7%94%A8navicat%E8%BF%9E%E6%8E%A5-wsl2%E4%B8%AD%E7%9A%84mysql%E6%9C%8D%E5%8A%A1\/"
-        },"genre": "posts","keywords": "WSL, Windows, Navicat, MySQL","wordcount":  645 ,
+        },"genre": "posts","keywords": "WSL, Windows, Navicat, MySQL","wordcount":  893 ,
         "url": "https:\/\/liangyi0506.github.io\/windows11-%E4%BD%BF%E7%94%A8navicat%E8%BF%9E%E6%8E%A5-wsl2%E4%B8%AD%E7%9A%84mysql%E6%9C%8D%E5%8A%A1\/","datePublished": "2023-03-02T23:13:00+08:00","dateModified": "2023-03-02T23:13:00+08:00","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
@@ -116,7 +116,7 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Windows使用Navicat连接 WSL2中的MySQL服务</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://liangyi0506.github.io/" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>LiangYi</a></span>&nbsp;<span class="post-category">included in <a href="/categories/mysql/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>MySQL</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-02">2023-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;645 words&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-03-02">2023-03-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;893 words&nbsp;
                 <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -136,9 +136,10 @@
       <ul>
         <li>
           <ul>
-            <li><a href="#一-在ubuntu中修改mysql的配置">一. 在Ubuntu中修改MySQL的配置</a></li>
-            <li><a href="#二-登录赋权添加可以远程访问的用户">二. 登录、赋权、添加可以远程访问的用户</a></li>
-            <li><a href="#三-查看wsl2发行版的ip">三. 查看WSL2发行版的IP</a></li>
+            <li><a href="#一-在wsl-ubuntu2004中安装mysql">一. 在WSL-Ubuntu20.04中安装MySQL</a></li>
+            <li><a href="#二-在ubuntu中修改mysql的配置">二. 在Ubuntu中修改MySQL的配置</a></li>
+            <li><a href="#三-登录赋权添加可以远程访问的用户">三. 登录、赋权、添加可以远程访问的用户</a></li>
+            <li><a href="#四-查看wsl2发行版的ip">四. 查看WSL2发行版的IP</a></li>
             <li><a href="#四-使用navicat登录">四. 使用navicat登录</a></li>
           </ul>
         </li>
@@ -152,13 +153,92 @@
 <p>WSL发行版是Ubuntu-20.04</p>
 <p>Windows版本是Windows11 22H2</p>
 <hr>
-<h4 id="一-在ubuntu中修改mysql的配置">一. 在Ubuntu中修改MySQL的配置</h4>
+<h4 id="一-在wsl-ubuntu2004中安装mysql">一. 在WSL-Ubuntu20.04中安装MySQL</h4>
+<p>1.更新Ubuntu包</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vim /etc/mysql/mysql.conf.d/mysql.cnf
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>2.安装MySQL（默认是Mysql8.0）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install mysql
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>3.启动MySQL服务器</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo /etc/init.d/mysql start
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>​	或</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo service mysql start
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>4.启动安全脚本提示符</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mysql_secure_installation
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这一步很可能在设置密码的时候会发生下面的错误提示：</p>
+<blockquote>
+<p>Failed! Error: SET PASSWORD has no significance for user ‘root‘@‘localhost‘ as the authe</p>
+</blockquote>
+<p>如果发生，可以采用下面的方式解决错误：</p>
+<p>（1）先进入MySQL中</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mysql
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>（2）更改密码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">ALTER</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;root&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">WITH</span><span class="w"> </span><span class="n">mysql_native_password</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="s1">&#39;mynewpassword&#39;</span><span class="p">;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>（3）再次启动安全脚本提示符</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="n">sudo</span><span class="w"> </span><span class="n">mysql_secure_installation</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>（4）输入刚才键入的密码，然后都选no即可</p>
+<h4 id="二-在ubuntu中修改mysql的配置">二. 在Ubuntu中修改MySQL的配置</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vim /etc/mysql/mysql.conf.d/mysqld.cnf
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>​	将下面两句进行注释</p>
@@ -243,7 +323,7 @@
 </span></span><span class="line"><span class="cl"><span class="c1"># table_open_cache       = 4000</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="二-登录赋权添加可以远程访问的用户">二. 登录、赋权、添加可以远程访问的用户</h4>
+</div><h4 id="三-登录赋权添加可以远程访问的用户">三. 登录、赋权、添加可以远程访问的用户</h4>
 <p>​	<strong>登录</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -295,7 +375,7 @@
 <pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">service mysql restart
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h4 id="三-查看wsl2发行版的ip">三. 查看WSL2发行版的IP</h4>
+</div><h4 id="四-查看wsl2发行版的ip">四. 查看WSL2发行版的IP</h4>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -346,7 +426,7 @@
     </div>
 
     <div class="post-nav"><a href="/wsl2-ubuntu20.04-cuda11.3-pytorch-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="prev" rel="prev" title="WSL2&#43;Ubuntu20.04&#43;CUDA11.3&#43;Pytorch环境搭建"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>WSL2+Ubuntu20.04+CUDA11.3+Pytorch环境搭建</a>
-            <a href="/wsl%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4/" class="next" rel="next" title="WSL相关指令">WSL相关指令<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+            <a href="/dockernginxtomcat%E4%BC%81%E4%B8%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/" class="next" rel="next" title="Docker&amp;Nginx&amp;Tomcat企业综合实战案例">Docker&Nginx&Tomcat企业综合实战案例<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

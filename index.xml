@@ -4,9 +4,25 @@
         <link>https://liangyi0506.github.io/</link>
         <description>凉意的个人博客网站</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>liangyi1999@yeah.net (LiangYi)</managingEditor>
-            <webMaster>liangyi1999@yeah.net (LiangYi)</webMaster><lastBuildDate>Sat, 04 Mar 2023 22:45:00 &#43;0800</lastBuildDate>
+            <webMaster>liangyi1999@yeah.net (LiangYi)</webMaster><lastBuildDate>Mon, 13 Mar 2023 17:09:38 &#43;0800</lastBuildDate>
             <atom:link href="https://liangyi0506.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Xshell连接WSL Ubuntu20.04</title>
+    <link>https://liangyi0506.github.io/xshell%E8%BF%9E%E6%8E%A5wsl-ubuntu20.04/</link>
+    <pubDate>Mon, 13 Mar 2023 17:09:38 &#43;0800</pubDate>
+    <author>LiangYi</author>
+    <guid>https://liangyi0506.github.io/xshell%E8%BF%9E%E6%8E%A5wsl-ubuntu20.04/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>WSL2相关指令</title>
+    <link>https://liangyi0506.github.io/wsl2%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4/</link>
+    <pubDate>Fri, 10 Mar 2023 21:46:44 &#43;0800</pubDate>
+    <author>LiangYi</author>
+    <guid>https://liangyi0506.github.io/wsl2%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4/</guid>
+    <description><![CDATA[一. 安装WSL 新版的 二.安装Linux发行版 三.卸载Linux发行版 四.卸载WSL]]></description>
+</item>
+<item>
     <title>Docker&amp;Nginx&amp;Tomcat企业综合实战案例</title>
     <link>https://liangyi0506.github.io/dockernginxtomcat%E4%BC%81%E4%B8%9A%E7%BB%BC%E5%90%88%E5%AE%9E%E6%88%98%E6%A1%88%E4%BE%8B/</link>
     <pubDate>Sat, 04 Mar 2023 22:45:00 &#43;0800</pubDate>
@@ -17,14 +33,6 @@
             </div>一. 从0开始构建Docker虚拟化平台 1.什么是虚拟化 ​ 将物理的资源转变为逻辑上可以管理调用的资源，以打破物理资源结构之间的壁垒，让计算的原]]></description>
 </item>
 <item>
-    <title>WSL相关指令</title>
-    <link>https://liangyi0506.github.io/wsl%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4/</link>
-    <pubDate>Fri, 03 Mar 2023 14:44:24 &#43;0800</pubDate>
-    <author>LiangYi</author>
-    <guid>https://liangyi0506.github.io/wsl%E7%9B%B8%E5%85%B3%E6%8C%87%E4%BB%A4/</guid>
-    <description><![CDATA[]]></description>
-</item>
-<item>
     <title>Windows使用Navicat连接 WSL2中的MySQL服务</title>
     <link>https://liangyi0506.github.io/windows11-%E4%BD%BF%E7%94%A8navicat%E8%BF%9E%E6%8E%A5-wsl2%E4%B8%AD%E7%9A%84mysql%E6%9C%8D%E5%8A%A1/</link>
     <pubDate>Thu, 02 Mar 2023 23:13:00 &#43;0800</pubDate>
@@ -32,7 +40,7 @@
     <guid>https://liangyi0506.github.io/windows11-%E4%BD%BF%E7%94%A8navicat%E8%BF%9E%E6%8E%A5-wsl2%E4%B8%AD%E7%9A%84mysql%E6%9C%8D%E5%8A%A1/</guid>
     <description><![CDATA[<div class="featured-image">
                 <img src="/images/navicat.jpg" referrerpolicy="no-referrer">
-            </div>本文中使用的 MySQL版本是MySQL8.0 WSL发行版是Ubuntu-20.04 Windows版本是Windows11 22H2 一. 在Ubuntu]]></description>
+            </div>本文中使用的 MySQL版本是MySQL8.0 WSL发行版是Ubuntu-20.04 Windows版本是Windows11 22H2 一. 在WSL-Ub]]></description>
 </item>
 <item>
     <title>WSL2&#43;Ubuntu20.04&#43;CUDA11.3&#43;Pytorch环境搭建</title>

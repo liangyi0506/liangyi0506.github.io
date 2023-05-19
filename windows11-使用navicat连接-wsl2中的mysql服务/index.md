@@ -13,10 +13,68 @@ Windows版本是Windows11 22H2
 
 ---
 
-#### 一. 在Ubuntu中修改MySQL的配置
+#### 一. 在WSL-Ubuntu20.04中安装MySQL
+
+1.更新Ubuntu包
 
 ```bash
-vim /etc/mysql/mysql.conf.d/mysql.cnf
+sudo apt update
+```
+
+2.安装MySQL（默认是Mysql8.0）
+
+```bash
+sudo apt install mysql
+```
+
+3.启动MySQL服务器
+
+```bash
+sudo /etc/init.d/mysql start
+```
+
+​	或
+
+```bash
+sudo service mysql start
+```
+
+4.启动安全脚本提示符
+
+```bash
+sudo mysql_secure_installation
+```
+
+这一步很可能在设置密码的时候会发生下面的错误提示：
+
+> Failed! Error: SET PASSWORD has no significance for user ‘root‘@‘localhost‘ as the authe
+
+如果发生，可以采用下面的方式解决错误：
+
+（1）先进入MySQL中
+
+```bash
+sudo mysql
+```
+
+（2）更改密码
+
+```sql
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password by 'mynewpassword';
+```
+
+（3）再次启动安全脚本提示符
+
+```sql
+sudo mysql_secure_installation
+```
+
+（4）输入刚才键入的密码，然后都选no即可
+
+#### 二. 在Ubuntu中修改MySQL的配置
+
+```bash
+vim /etc/mysql/mysql.conf.d/mysqld.cnf
 ```
 
 ​	将下面两句进行注释
@@ -65,7 +123,7 @@ myisam-recover-options  = BACKUP
 # table_open_cache       = 4000
 ```
 
-#### 二. 登录、赋权、添加可以远程访问的用户
+#### 三. 登录、赋权、添加可以远程访问的用户
 
 ​	**登录**
 
@@ -100,7 +158,7 @@ flush privileges;
 service mysql restart
 ```
 
-#### 三. 查看WSL2发行版的IP
+#### 四. 查看WSL2发行版的IP
 
 ```bash
 ifconfig
